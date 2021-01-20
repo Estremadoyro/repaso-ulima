@@ -1,4 +1,9 @@
 # REPASO ULIMA
+
+Aplicacion web que permite a los profesores crear pruebas para practicar para los alumnos, los profesores pueden crear cursos que enseñan y agregar temas,
+también preguntas por cada tema que deseen. Las preguntas son almacenadas en 
+Firebase para ser insumidas por la aplicación en iOS. 
+
 ![alt text](https://i.imgur.com/BP0iHEj.png)
 
 # DASHBOARD DE CURSOS 
