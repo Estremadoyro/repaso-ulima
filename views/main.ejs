@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--ICONO DE TAB-->
+    <link rel="icon" href="/images/icono-ventana.ico">
+    <title>Repaso ULima</title>
+    <!--JUQERY & POPPER-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+
+    <!--BOOTSTRAPCDN CSS & JS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!--CSS MAIN.HTML-->
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/tabstyles.css">
+    <link rel="stylesheet" type="text/css" href="/css/inicio.css">
+
+
+    <script defer src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+
+    <script defer src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <section class="py-0">
+            <div class="text-center py-0">
+                <!--LOGO-->
+                <a href="/"><img src="/images/logo-repasoulima-main.png"></a>
+            </div>
+            <div class="tabs tabs-style-tzoid">
+                <nav>
+                    <ul id="ul_navVar">
+                        <!--Utilizar ejs para que los li se generen dinamicamente segun los cursos en firestore-->
+
+
+                        <% for(var i = 0; i < coursesList.length; i++ ) {%>
+                        <li><a href="#tab-curso-<%= coursesList[i].id%>" class="fa fa-book row"><span>&nbsp;
+                                    <%= coursesList[i].name%> </span></a></li>
+                        <%}%>
+
+                        <li><a href="#tab-curso-add" class="fa fa-plus" id="tab_addCurso"><span></span></a></li>
+                    </ul>
+                </nav>
+
+                
+                
+                <div class="content-wrap row">
+                    <div id="div_deck" class="col col-12 px-0 justify-content-center align-items-center" >
+                    <!--Columna Derecha-->     
+                    
+                    <!-- Se debe generar dinamicamente-->                    
+                        
+                    <% for (var i = 0; i < coursesList.length; i++) {%>
+                        <section id="cont-curso-<%=coursesList[i].id%>">
+
+                            <div class="my-4 float-left mx-4 text-center " id="contarTemas">
+                                <!--Contar cuantos Temas hay creados para ese profesor en ese curso-->
+                                <%if (coursesList[i].topics != null){%>
+                                <span id="numeroTemas"><%= coursesList[i].topics.length%></span>
+                                <% }else {  %>
+                                <span id="numeroTemas">0</span>
+                                <% }%>
+                                <br>
+                                # Temas
+                                <br>
+                                <button class="btn btn-sm btn-login mt-4 text-uppercase font-weight-bold verde"
+                                    type="button" data-toggle="modal" data-target="#modal_<%=(coursesList[i].id.replace(/ /g, "_")).split(".").join("")%>"
+                                    id="btn-addCurso-<%=coursesList[i].id%>">Crear Tema</button><br>
+
+
+                                    <button type="button" class="btn btn-sm btn-login mt-4 text-uppercase font-weight-bold rojo" data-toggle="modal" data-target="#modalEliminarCurso" id="btn_eliminar_curso">Eliminar Curso</button>    
+
+                                    <!-- MODAL CONFIRMACOIN ELIMINAR CURSO-->
+                                    <div class="modal fade" id="modalEliminarCurso" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLongTitle">Eliminar Curso</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              Esta seguro que desea <span style="color:#d9534f; text-decoration: underline;">eliminar</span> el curso: <b><%= coursesList[i].id%></b>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                              <button type="button" class="btn btn-danger rojo" onclick="eliminarCurso('<%= coursesList[i].id%>')">Eliminar</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                            </div>
+
+                            <!-- CARD DECK-->
+                            <div class="overflow lg-2 mt-4">
+                                <!--CARDS-->
+                                <!--TEMAS DINAMICOS-->
+                                <%if (coursesList[i].topics != null){%>
+                                <%for (var j = 0; j <coursesList[i].topics.length; j++){%>
+                                <div class="card border-success m-4">
+
+                                    <!-- BOTON PARA ELIMINAR TEMA
+                                    <a href="#">
+                                        <span class="notify-badge" id="btn_eliminar" onclick="eliminarTemaDeCurso('<%=coursesList[i].id%>','<%=coursesList[i].topics[j]%>')">&nbsp;X&nbsp;</span>
+                                    </a>
+                                    -->
+
+                                    <a href="/<%=coursesList[i].id%>/<%=coursesList[i].topics[j]%>">                            
+                                    <a onclick="topicView('<%=coursesList[i].id%>','<%=coursesList[i].topics[j]%>')">
+                                        <div class="card-header"><%=coursesList[i].topics[j]%></div>
+                                        <div class="card-body text-success">
+                                            <h5 class="card-title"> </h5>
+                                            <p class="card-text"></p>
+                                        </div>
+                                    </a>
+
+                                </div>
+                                <%}%>
+                                <%}else{%>
+                                <div class="card border-success mb-3">
+                                    <div class="card-header">No hay temas</div>
+                                    <div class="card-body text-success">
+                                        <h5 class="card-title"> </h5>
+                                        <p class="card-text"></p>
+                                    </div>
+                                </div>
+                                <%}%>
+                                    
+                            </div>
+                        </section>
+                        <% } %>
+                        <div id="div_modal">
+                                <% for (var i = 0; i < coursesList.length; i++) {%>
+                                <!-- Modal -->
+                                <div class="modal fade" id="modal_<%=(coursesList[i].id.replace(/ /g, "_")).split(".").join("")%>" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle"><strong>Crear
+                                                        Tema</strong></h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <label for="nombreTema">
+                                                    Tema para el curso: <%=coursesList[i].id%>
+                                                </label>
+
+                                                <input id="input_<%=(coursesList[i].id.replace(/ /g, "_")).split(".").join("")%>" type="text" name="nombreTema"
+                                                    class="form-control form-control-md inputTema" autofocus>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Cancelar</button>
+                                                <a onclick="crearTema('<%=coursesList[i].id%>')" type="button" class="btn btn-success crearTema">Crear
+                                                    Tema</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                                
+                            </div>
+                                <section id="cont-curso-add">
+
+                                    <!-- Agregar curso no cambiar-->
+                                    <div>
+
+
+                                        <form class="mx-auto mt-4">
+
+                                            <div class="none" role="alert" id="alerta"></div>
+                                            <br>
+
+                                            <div class="form-label-group d-inline-block ">
+                                                <input type="text" name="career" id="inputCarrera"
+                                                    class="form-control form-control-lg" required autofocus>
+                                                <label class="d-inline-block" for="inputCarrera">Carrera</label>
+                                            </div><br>
+
+                                            <div class="form-label-group d-inline-block ">
+                                                <input type="text" name="course" id="inputCurso"
+                                                    class="form-control form-control-lg" required autofocus>
+                                                <label class="d-inline-block" for="inputCurso">Curso</label>
+                                            </div><br>
+
+                                            <div class="form-label-group d-inline-block ">
+                                                <input type="text" name="credits" id="inputCreditos"
+                                                    class="form-control form-control-lg" required autofocus>
+                                                <label class="d-inline-block" for="inputCreditos">Creditos</label>
+                                            </div><br>                                                                            
+                                            <a type="btn" href="#"
+                                                class="btn btn-sm btn-login text-uppercase verde font-weight-bold mb-2"
+                                                id="btn-addCurso">Agregar Curso</a>
+
+                                        </form>
+
+                                    </div>
+
+                                </section> <!-- Agregar curso no cambiar-->
+                            </div>
+            </div> <!-- /content -->
+
+    </div> <!-- /tabs -->
+
+    </section>
+    <button type="button" class="btn btn-danger mt-4" id="btn_salir">Salir</button>
+    </div>
+
+    <script defer src="/js/main.js" type="text/javascript"></script>
+
+</body>
+
+</html>

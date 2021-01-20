@@ -1,0 +1,33 @@
+{
+  "name": "WebPage",
+  "version": "1.0.0",
+  "description": "//NPM COMANDS npm init -y npm install express --save npm install npm install @types/express --save",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "downloadDependencies": "npm install",
+    "built": "tsc",
+    "start": "node ./dist/server.js",
+    "all": "npm run built && npm run start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.17.1",
+    "consolidate": "^0.15.1",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "firebase-admin": "^8.5.0",
+    "firebaseui": "^4.2.0",
+    "mustache": "^3.1.0",
+    "rangeslider.js": "^2.3.3",
+    "typescript": "^3.7.2"
+  },
+  "devDependencies": {
+    "@types/consolidate": "^0.14.0"
+  }
+}

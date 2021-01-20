@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--ICONO DE TAB-->
+  <link rel="icon" href="/images/icono-ventana.ico">
+
+  <title>Repaso ULima</title>
+  <!--JUQERY & POPPER-->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+
+  <!--BOOTSTRAPCDN CSS & JS-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!--CSS INICIO.HTML-->
+  <link rel="stylesheet" type="text/css" href="/css/inicio.css">
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <!-- Add Firebase products -->
+  <script defer src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+
+  <script defer src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
+
+
+  <script defer src="/js/recuperar.js"></script>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row no-gutter">
+      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+      <div class="col-md-8 col-lg-6">
+        <div class="login d-flex align-items-center py-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-9 col-lg-8 mx-auto">
+                <!--LOGO REPASO ULIMA-->
+                <a href="/"><img src="/images/logo-repasoulima-main.png"></a>
+                <h3 class="login-heading mb-4">Bienvenido</h3>
+
+                <div class="none" role="alert" id="alerta"></div>
+                
+                <div class="form-label-group">
+                  <!-- name correo puede cambiar dependiendo de las necsidades en el backend-->
+                  <input type="text" name="email" id="inputEmail" class="form-control" placeholder="Emailaddress"
+                    required autofocus>
+                  <label for="inputEmail">Direccion de correo</label>
+                </div>
+
+                <!-- BOTON PARA TOGLEAR-->
+                <button class="btn btn-lg btn-success btn-block btn-login text-uppercase font-weight-bold mb-2"
+                  data-toggle="modal" onclick="recuperar()" data-target="#exampleModal" type="submit" id="btn-recuperar"
+                  disabled>Enviar Contraseña</button>
+                <!-- PUP UP -->
+
+                <!--
+
+
+
+
+
+                    
+             
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Administracion contraseña</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+
+                        <b>Se la envio una nueva contraseña a su correo</b>
+
+                      </div>
+                      <div class="modal-footer">
+
+                        <a type="btn" class="btn btn-primary" href="/" data-dismiss="modal">Regresar</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              -->
+
+                <div class="text-center mt-5 align-items-center">
+                  <h3 class="login-heading">¿Alumno?</h3>
+                  <hr>
+                  <br>
+                  <a href="https://itunes.apple.com/us/app/trivia-crack/id651510680" target="_blank">
+                    <img src="/images/app-store.png" class="descarga-appstore">
+                  </a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function () {
+      $('#inputEmail').keyup(function () {
+        if ($(this).val().length != 0) {
+          $('#btn-recuperar').attr('disabled', false);
+        }
+        else {
+          $('#btn-recuperar').attr('disabled', true);
+        }
+      })
+    });
+  </script>
+</body>
+
+</html>

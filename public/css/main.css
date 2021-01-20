@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css?family=Asap&display=swap');
+
+body {
+	background: #e7ecea;
+	color: #74777b;
+	font-size: 1em;	
+}
+
+*{
+    font-family: Asap, sans-serif ;
+}
+
+/* Pestanas del conteiner*/
+.container > section {
+	padding: 5em 0;
+	font-size: 1.25em;
+	min-height: 100%;
+	
+}
+
+.overflow{ 
+
+	cursor: pointer;
+}
+
+.overflow {
+	overflow-x: scroll;
+	overflow-y: hidden;	
+	white-space: nowrap;
+}
+.card {	  
+	display: inline-block;
+	height: 200px;
+	min-width: 10rem !important; 
+}
+
+.opciones { 
+	width: 100%;
+  	text-align: center;
+	
+}
+
+.opciones_box { 
+	display: inline-block;
+	
+}
+  
+/* Texto fuera del container, done poner boton de crear Tema*/
+p {
+	text-align: center;
+	padding: 1em;
+}
+
+li {
+	border: #74777b ;
+}
+
+b { 
+	color: #2CC185 ; 
+	font-weight: 100 ;
+}
+
+/* Size radio buttons*/
+input[type='radio'] { 
+	transform: scale(2); 
+	vertical-align: middle ; 
+	height: 100%;
+	margin-top: -7px ; 
+	
+}
+
+#opciones { 
+	vertical-align: middle ; 
+}
+.tabs {
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	width: 100%;
+	font-weight: 300;
+	font-size: 1.25em;
+}
+
+.form-check-inline { 
+	text-align: center ; 
+}
+
+.footer { 
+	text-align: center ; 
+}
+/* Nav */
+.tabs nav {
+	text-align: center;
+}
+
+nav ul li:hover {
+    text-decoration : none ;
+}
+
+#codigoGenerado { 
+	color: black ; 
+}
+
+/* Estos para compatibilidad Moz*/
+.tabs nav ul {
+	position: relative;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: flex;
+	margin: 0 auto;
+	padding: 0;
+	max-width: 1200px;
+	list-style: none;
+	-ms-box-orient: horizontal;
+    -ms-box-pack: center;
+	-webkit-flex-flow: row wrap;
+	-moz-flex-flow: row wrap;
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap;
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	-ms-justify-content: center;
+	justify-content: center;
+}
+
+.tabs nav ul li {
+	position: relative;
+	z-index: 1;
+	display: block;
+	margin: 0;
+	text-align: center;
+	-webkit-flex: 1;
+	-moz-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+}
+
+
+.tabs nav a {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 2.5;
+}
+
+.tabs nav a span {
+	vertical-align: middle;
+	font-size: 0.75em;
+}
+
+.tabs nav li.tab-current a {
+	color: #74777b;
+}
+
+.tabs nav a:focus {
+	outline: none;
+}
+
+.tabs nav ul li a{ 
+	text-decoration: none ; 
+}
+/* Content */
+.content-wrap {
+	position: relative;
+	height: 400px;
+}
+
+.content-wrap section {
+	display: none;
+	margin: 0 auto;
+	padding: 1em;
+	max-width: 1200px;
+	text-align: center;
+}
+
+.content-wrap section.content-current {
+	display: block;
+}
+
+.content-wrap section p {
+	margin: 0;
+	padding: 0.75em 0;
+	color: rgba(40,44,42,0.05);
+	font-weight: 900;
+	font-size: 4em;
+	line-height: 1;
+}
+
+.btn-danger:hover  {
+	color  : black ;  
+}
+
+.btn:hover{ 
+	box-shadow: 5px 10px 3px #888888;
+	color: white !important ; 
+}
+
+
+.card::after {
+	content: "";
+	border-radius: 5px;
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	opacity: 0;
+	-webkit-transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+	transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+.card:hover {
+	-webkit-transform: scale(1.25, 1.25);
+	transform: scale(1.1, 1.1);
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+	border-width: 2px; 
+	transition-duration: 0.6s;
+}
+  
+.card:hover::after {
+	  opacity: 1;
+}
+
+.crearTema { 
+	color: white !important;
+}
+
+/* Fallback si se va a la*/
+.no-js .content-wrap section {
+	display: block;
+	padding-bottom: 2em;
+	border-bottom: 1px solid rgba(255,255,255,0.6);
+}
+
+.no-flexbox nav ul {
+	display: block;
+}
+
+.no-flexbox nav ul li {
+	min-width: 15%;
+	display: inline-block;
+}
+
+@media screen and (max-width: 20em) {
+	.tabs nav a.icon span {
+		display: none;
+	}
+	.tabs nav a:before {
+		margin-right: 0;
+	}
+}
+
+.notify-badge{
+    position: absolute;
+    right:-20px;
+    top:-10px;
+    background:#d9534f;
+    text-align: center;
+    border-radius: 30px 30px 30px 30px;
+    color:white;
+    padding:5px 10px;
+	font-size:20px;
+	border: 2px solid rgba(255,255,255,0.6);;
+}
+
+.notify-badge:hover { 
+
+	cursor: pointer;
+}
+
+#btn_eliminar:hover { 
+
+	border-width: 2px;
+}

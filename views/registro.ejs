@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--ICONO DE TAB-->
+    <link rel="icon" href="/images/icono-ventana.ico">
+
+    <title>Repaso ULima</title>
+    <!--JUQERY & POPPER-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    
+    <!--BOOTSTRAPCDN CSS & JSasdadsd AEAEAE-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!--CSS INICIO.HTML-->
+    <link rel="stylesheet" type="text/css" href="/css/inicio.css">
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ 
+    
+    <!-- Add Firebase products -->
+    <script defer src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+    
+    
+    <script defer src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
+    
+    <script defer src="/js/registro.js"></script>
+    
+  
+    </head>
+    
+    <body>
+      <div class="container-fluid w-100">
+        <div class="row no-gutter">
+          <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+          <div class="col-md-8 col-lg-6">
+            <div class="login d-flex align-items-center py-5">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-9 col-lg-8 mx-auto">
+                      <!--LOGO REPASO ULIMA-->
+                      <a href="/"><img src="/images/logo-repasoulima-main.png" class="mb-2"></a>
+                    <h3 class="login-heading mb-4">Bienvenido</h3>
+
+                    <div class="none" role="alert" id="alerta"></div>
+
+                        <div class="form-label-group">                          
+                            <input type="nombre" name="name" id="inputNombre" class="form-control" placeholder="Nombre" required autofocus>
+                            <label for="inputNombre">Nombre</label>
+                        </div>
+
+                        <div class="form-label-group">                         
+                            <input type="apellido" name="apellido" id="inputApellido" class="form-control" placeholder="Apellido" required autofocus>
+                            <label for="inputApellido">Apellido</label>
+                        </div>
+
+                        <div class="form-label-group">                         
+                            <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                            <label for="inputEmail">Direccion de correo</label>
+                        </div>
+      
+                        <div class="form-label-group">
+                            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                            <label for="inputPassword">Contraseña</label>
+                        </div>
+
+                        <div class="form-label-group">
+                            <input type="password" name="pass_conf" id="inputPassword-conf" class="form-control" placeholder="Password">
+                            <label for="inputPassword-conf">Confirmar contraseña</label>
+                        </div>
+                        
+                      <button class="btn btn-lg btn-success btn-block btn-login text-uppercase font-weight-bold mb-2"  onclick="crearCuenta()" id="btn-registrate">Registrate</button>
+                  
+                      
+
+                    <div class="text-center mt-5 align-items-center">
+                        <h3 class="login-heading" >¿Alumno?</h3>
+                        <hr> 
+                        <br>
+                        <a href="https://itunes.apple.com/us/app/trivia-crack/id651510680" target="_blank">
+                            <img src="/images/app-store.png" class="descarga-appstore">
+                        </a>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</body>
+</html>
